@@ -7,6 +7,14 @@ public class Pacdot : MonoBehaviour {
     [DllImport("__Internal")]
     private static extern void ConsoleLog(string label ,int num);
 
+	private PlayerController pacman;
+
+	void Start(){
+
+		this.pacman = GameObject.Find("pacman").GetComponent<PlayerController>();
+
+	}
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.name == "pacman")
@@ -16,6 +24,9 @@ public class Pacdot : MonoBehaviour {
 			ConsoleLog("score", GameManager.score);
 
 		    GameObject[] pacdots = GameObject.FindGameObjectsWithTag("pacdot");
+
+			this.pacman.getDot();
+
             Destroy(gameObject);
 
 		    if (pacdots.Length == 1)

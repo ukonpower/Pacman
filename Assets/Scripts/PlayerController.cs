@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     public static int killstreak = 0;
 
+    public AudioClip getDotSound;
+    private AudioSource audioSource;
+
     // script handles
     private GameGUINavigation GUINav;
     private GameManager GM;
@@ -34,6 +37,9 @@ public class PlayerController : MonoBehaviour
         SM = GameObject.Find("Game Manager").GetComponent<ScoreManager>();
         GUINav = GameObject.Find("UI Manager").GetComponent<GameGUINavigation>();
         _dest = transform.position;
+
+        this.audioSource = this.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -133,6 +139,12 @@ public class PlayerController : MonoBehaviour
     public Vector2 getDir()
     {
         return _dir;
+    }
+
+    public void getDot(){
+
+        this.audioSource.PlayOneShot( this.getDotSound );
+
     }
 
     public void UpdateScore()
