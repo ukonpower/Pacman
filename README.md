@@ -1,3 +1,6 @@
+# unity version
+unity 5.6.7f1
+
 Pacman-Clone
 ============
 
